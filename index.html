@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html ng-app="resumeApp">
+
+<head>
+    <title>Resume Builder</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body ng-controller="ResumeController" class="form">
+
+    <h1>Resume Builder</h1>
+
+
+    <div id="Personal-Information">
+        <h2>1)Personal  Information: </h2>
+        <form>
+            <label>Name:</label><input type="text" ng-model="formData.name" required placeholder="ex-viral"><br>
+            <label>SurName:</label><input type="text" ng-model="formData.Surname" required placeholder="ex-parikh"><br>
+            <label> Date Of Birth:</label><input type="date" ng-model="formData.DOB" required placeholder="DD-MM-YYYY"><br><br>
+            <label>Email:</label><input type="email" ng-model="formData.email" required placeholder="example@example.com"><br>
+            <label>Phone Number:</label><input type="number" ng-model="formData.phoneNumber"  placeholder="xx-xx-xx-xx-xx" ><br>
+            <label>Enter Your Location:</label><input type="text" ng-model="location" placeholder="City, State, Country"><br>
+           
+        </form>
+    </div>
+    <div id="Education">
+        <h2>2) Eduction Details:</h2>
+        <form>
+    <label>Select Your Education Level:</label><br>
+    <input type="radio" id="highschool" name="education" value="highschool" ng-model="formData.educationLevel"><label for="highschool">High School</label><br>
+    <input type="radio" id="bachelor" name="education" value="bachelor" ng-model="formData.educationLevel"><label for="bachelor">Bachelor's Degree</label><br>
+    <input type="radio" id="master" name="education" value="master" ng-model="formData.educationLevel"><label for="master">Master's Degree</label><br>
+    <input type="radio" id="doctorate" name="education" value="doctorate" ng-model="formData.educationLevel"><label for="doctorate">Doctorate</label><br>
+    <label>Year of gaduation:</label><select ng-model="fromData.selectedyear"><br>
+    <option value="">-- Select gaduation year --</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+    <option value="2027">2027</option>
+    <option value="2028">2028</option>
+</select><br>
+<label>Fields:</label>
+<select ng-model="fromData.fields">
+    <option value="">-- Select field --</option>
+    <option value="Civil Engineering ">Civil Engineering</option>
+    <option value="Mechanical ngineering">Mechanical Engineering</option>
+    <option value="Electrical Engineering">Electrical Engineering</option>
+    <option value="Computer Engineering">Computer Engineering</option>
+    <option value="Chemical Engineering">Chemical Engineering</option>
+    <option value="Software Engineering ">Software Engineering</option>
+    <option value="Electonics and Communation Engineering">Electonics and Communation Engineering</option>
+    <option value="Information Technology">Information Technology</option>
+    <option value="Aerospce Engineering">Aerospce Engineering</option>
+    <option value="Biomedical Engineering">Biomedical Engineering</option>
+    </select>
+        </form>
+    </div>    
+
+    <div id="Personal-Information">
+        <h2> 3)Skill: </h2>
+        <form>
+            <label>Name of Skill:</label>
+            <select ng-model="formData.skillname"><br>
+                <option value="">-- Select --</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+                  <option value="C#">C#</option>
+  <option value="PHP">PHP</option>
+  <option value="Ruby">Ruby</option>
+  <option value="Swift">Swift</option>
+  <option value="Kotlin">Kotlin</option>
+  <option value="Objective-C">Objective-C</option>
+  <option value="TypeScript">TypeScript</option>
+  <option value="Go">Go</option>
+  <option value="Rust">Rust</option>
+  <option value="Scala">Scala</option>
+  <option value="Perl">Perl</option>
+  <option value="R">R</option>
+  <option value="SQL">SQL</option>
+  <option value="HTML/CSS">HTML/CSS</option>
+      </select>
+            <label>Experience:</label>
+            <input type="text" ng-model="formData.experience"><br>
+            </form>
+    </div>
+    <button ng-click="generateResume()">Generate Resume</button>
+    <div id="resume-preview" ng-show="resumeGenerated" class="letter">
+        <h2> Resume letter</h2>
+        <br>
+
+        <p><strong>Personal Information</strong> </p>
+        <p><strong>👤:</strong> {{ formData.name }} {{ formData.Surname }}</p>
+        <p><strong>DOB:</strong> {{ formData.DOB | date:'dd/MM/yyyy'}}</p>
+        <p><strong>☎️:</strong> {{ formData.phoneNumber }} </p>
+        <p><strong>✉️:</strong> {{ formData.email }}</p><br>
+
+        <p><strong>Education</strong></p> </p>
+        <p><strong>🎓:</strong> {{ formData.educationLevel }}</p>
+        <p><strong>Year Of Graduation:</strong>{{ fromData.selectedyear }} </p>
+        <p><strong>Field:</strong> {{fromData.fields}}</p>
+        <p><strong>Skills:</strong> {{ formData.skillname }} </p>
+        <p><strong>Experience:</strong> {{ formData.experience }}</p>
+        
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
